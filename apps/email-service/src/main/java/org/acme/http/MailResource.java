@@ -25,7 +25,7 @@ public class MailResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response execute(MailDto message) {
-        mail.execute(message);
+        mail.execute(message).join();
         return Response.status(200).entity(ApiResponse.ok("Email was sent to " + message.getTo() + " successfully", null)).build();
     }
 }

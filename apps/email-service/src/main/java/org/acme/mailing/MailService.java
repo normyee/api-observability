@@ -13,8 +13,8 @@ public class MailService implements ISendMail {
     Mailer mailer;
 
     @Override
-    public void execute(MailDto message) {
-        CompletableFuture.runAsync(() -> {
+    public CompletableFuture<Void> execute(MailDto message) {
+        return CompletableFuture.runAsync(() -> {
             try {
                 Mail mail = Mail.withText(message.getTo(), message.getSubject(), message.getTextContent())
                         .setHtml(message.getHtmlContent());
@@ -25,4 +25,5 @@ public class MailService implements ISendMail {
             }
         });
     }
+
 }

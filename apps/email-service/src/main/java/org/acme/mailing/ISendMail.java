@@ -1,5 +1,7 @@
 package org.acme.mailing;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface ISendMail {
-    public void execute(MailDto message);
+    CompletableFuture<Void> execute(MailDto message);
 }
