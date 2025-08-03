@@ -21,7 +21,6 @@ public class MailService implements ISendMail {
                         .setHtml(message.getHtmlContent());
 
                 mailer.send(mail);
-                return;
             } catch (Exception e) {
                 System.out.println("Error has occurred: " + e);
             }
