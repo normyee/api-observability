@@ -5,6 +5,7 @@ import io.quarkus.mailer.Mailer;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import java.util.concurrent.CompletableFuture;
 
 @Named("smtp")
 @ApplicationScoped
@@ -14,21 +15,16 @@ public class MailService implements ISendMail {
 
     @Override
     public void execute(MailDto message) {
+        CompletableFuture.runAsync(() -> {
+            try {
+                Mail mail = Mail.withText(message.getTo(), message.getSubject(), message.getTextContent())
+                        .setHtml(message.getHtmlContent());
 
-        try {
-            Mail mail = Mail.withText(message.getTo(), message.getSubject(), message.getTextContent())
-                    .setHtml(message.getHtmlContent());
-
-            System.out.println("EMAIL CONFIG: " + mail);
-            mailer.send(mail);
-
-            return;
-        }
-        catch (Exception e) {
-            System.out.println("Error has occurred: " + e);
-
-        }
-
-
+                mailer.send(mail);
+                return;
+            } catch (Exception e) {
+                System.out.println("Error has occurred: " + e);
+            }
+        });
     }
 }
