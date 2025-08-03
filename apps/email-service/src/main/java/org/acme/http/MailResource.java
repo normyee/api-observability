@@ -1,5 +1,7 @@
 package org.acme.http;
 
+import io.micrometer.core.annotation.Counted;
+import io.micrometer.core.annotation.Timed;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.ws.rs.Consumes;
@@ -18,6 +20,8 @@ public class MailResource {
     ISendMail mail;
 
     @POST
+    @Counted(value = "total_notification_sent", description = "Total of sent emails to /mail")
+    @Timed(value = "mail_send_duration", description = "Time spent sending mails")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response execute(MailDto message) {
