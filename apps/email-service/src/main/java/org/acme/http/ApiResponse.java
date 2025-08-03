@@ -1,5 +1,4 @@
 package org.acme.http;
-import java.util.Optional;
 
 public class ApiResponse<T> {
     public String message;
