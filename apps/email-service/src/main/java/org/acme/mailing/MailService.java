@@ -1,5 +1,4 @@
 package org.acme.mailing;
-
 import io.quarkus.mailer.Mail;
 import io.quarkus.mailer.Mailer;
 import jakarta.enterprise.context.ApplicationScoped;
