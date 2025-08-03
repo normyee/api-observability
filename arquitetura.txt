@@ -1,0 +1,13 @@
+NGINX PARA API GATEWAY
+
+API DE ORÇAMENTOS
+API DE NOTIFICAÇÃO
+
+docker-compose para postgres
+dockerfile para cada aplicação
+
+é lançado uma notificação a cada orçamento lançado
+
+kubernetes
+namespace de infra com prometheus/grafana
+pod com postgres, api de orçamentos, api de notificação no seu próprio namespace
