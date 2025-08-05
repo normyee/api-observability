@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@testcontainers/mongodb": "^11.5.0"
+  },
+  "dependencies": {
+    "@typegoose/typegoose": "^12.18.0"
+  }
+}
