@@ -107,6 +107,26 @@ export class Service {
   isUrgent(): boolean {
     return this._urgency;
   }
+
+  getBudgetItems(): BudgetItem[] {
+    return this._budgetItems;
+  }
+
+  getMaterialsNeeded(): string[] {
+    return this._materialsNeeded;
+  }
+
+  getSpecificRequirements(): string {
+    return this.specificRequirements;
+  }
+
+  getLocationDetails(): string {
+    return this.location_details;
+  }
+
+  getComplexityLevel(): ComplexityLevel {
+    return this.complexityLevel;
+  }
 }
 
 export class Quote {
@@ -132,6 +152,22 @@ export class Quote {
 
   getPrice(): string {
     return this._price;
+  }
+
+  getValidUntil(): Date {
+    return this._validUntil;
+  }
+
+  getEstimatedDurationDays(): number {
+    return this._estimatedDurationDays;
+  }
+
+  getPaymentTerms(): string {
+    return this._paymentTerms;
+  }
+
+  getConditions(): string {
+    return this._conditions;
   }
 
   isExpired(): boolean {
